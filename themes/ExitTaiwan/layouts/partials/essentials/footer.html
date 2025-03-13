@@ -1,0 +1,84 @@
+<footer class="bg-light dark:bg-darkmode-light">
+  <div class="container">
+    {{/* <div class="row items-center py-10">
+      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:text-left">
+        <!-- navbar brand/logo -->
+        <a class="navbar-brand inline-block" href="{{ site.Home.RelPermalink }}">
+          {{ partial "logo" }}
+        </a>
+      </div>
+      <div class="lg:col-6 mb-8 text-center lg:mb-0">
+        <ul>
+          {{ range site.Menus.footer }}
+          <li class="m-3 inline-block">
+            <a {{ if findRE `^http` .URL }} target="_blank" rel="noopener" {{ end }} href="{{ if findRE `^#` .URL }}
+                  {{ if not $.IsHome }}
+                    {{ site.Home.RelPermalink }}
+                  {{ end }}{{ .URL }}
+                {{ else }}
+                  {{ .URL | relLangURL }}
+                {{ end }}">{{ .Name }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="lg:col-3 mb-8 text-center lg:mb-0 lg:mt-0 lg:text-right">
+        <ul class="social-icons">
+          {{ range site.Data.social.main }}
+          <li>
+            <a target="_blank" aria-label="{{ .name }}" rel="nofollow noopener" href="{{ .link | safeURL }}">
+              <i class="{{ .icon }}"></i>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div> */}}
+
+    <div class="row py-10">
+      {{/* Footer details */}}
+      <div class="col-3">
+        <a class="navbar-brand flex items-center gap-3 mb-4" href="{{ site.Home.RelPermalink }}">
+          {{ partial "logo" }}
+          <span class="mt-1 text-2xl">{{site.Params.logo_text}}</span>
+        </a>
+        <a href="mailto:{{site.Params.email}}"><strong>{{T "email"}}:</strong> {{site.Params.email }}</a>
+      </div>
+
+      {{/* Footer About */}}
+      <div class="col-3">
+        <h5 class="mb-3">{{T "about"}}</h5>
+        <ul>
+          {{range site.Menus.footer_about}}
+          <li><a href="{{.URL | relLangURL}}">{{.Name}}</a></li>
+          {{end}}
+        </ul>
+      </div>
+      {{/* Footer Resources */}}
+      <div class="col-3">
+        <h5 class="mb-3">{{T "tourism_resources"}}</h5>
+        <ul>
+          {{range site.Menus.footer_resources}}
+          <li><a href="{{.URL | relLangURL}}">{{.Name}}</a></li>
+          {{end}}
+        </ul>
+      </div>
+      {{/* Footer Links */}}
+      <div class="col-3">
+        <h5 class="mb-3">{{T "related_links"}}</h5>
+        <ul>
+          {{range site.Menus.footer_links}}
+          <li><a href="{{.URL | relLangURL}}">{{.Name}}</a></li>
+          {{end}}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-border dark:border-darkmode-border border-t py-7">
+    <div class="text-text-light dark:text-darkmode-text-light container text-center">
+      <p>
+        {{ site.Params.copyright | markdownify }}
+      </p>
+    </div>
+  </div>
+</footer>
